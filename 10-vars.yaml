@@ -4,7 +4,7 @@
   vars:
     NAME: "vars from paly"
   vars_files:
-  - cource.yaml
+  - course.yaml
   vars_prompt:
   - name: NAME
     prompt: Please enter the name
