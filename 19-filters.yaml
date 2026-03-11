@@ -3,6 +3,8 @@
   connection: local
   vars:
     topics: shell, linux, ansible, terraform
+    course: "Devops with ansible"
+    myIp: "192.23.45.345"
     tags:
       name: ansible
       project: roboshop
@@ -45,3 +47,15 @@
   - name: convert yaml to json
     ansible.builtin.debug:
       msg: "{{ student_yaml | to_nice_json  }}"
+      
+  - name: convert to upper case
+    ansible.builtin.debug:
+      msg: "{{ course | upper }}"
+
+  - name: convert to lower case
+    ansible.builtin.debug:
+      msg: "{{ course | lower }}"
+
+  - name: check ipv4
+    ansible.builtin.debug:
+      msg: "{{ myIp | ansible.utils.ipv4 }}"
