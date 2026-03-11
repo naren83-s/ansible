@@ -40,4 +40,8 @@
 
   - name: read student yaml
     ansible.builtin.debug:
-      msg: "{{ lookup( 'file', 'student.yaml' ) | from_yaml }}"
+      student_yaml: "{{ lookup( 'file', 'student.yaml' ) | from_yaml }}"
+
+  - name: convert yaml to json
+    ansible.builtin.debug:
+      msg: "{{ student_yaml | to_nice_json  }}"
