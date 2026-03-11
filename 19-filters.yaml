@@ -2,10 +2,10 @@
   hosts: local
   connection: local
   vars:
-    topics: shell, linux, ansible, terraform
-    course: "Devops with ansible"
-    myIp: "192.23.45.345"
-    tags:
+    topics: linux, shell, ansible, terraform
+    course: "DevOps with Ansible"
+    myIp: "192.23.89.123"
+    tagsMap:
       name: ansible
       project: roboshop
       component: catalogue
@@ -26,7 +26,7 @@
   tasks:
   - name: greeting
     ansible.builtin.debug:
-      msg: " HI Narendra, {{ GREETING | default('good morning') }}"
+      msg: "Hi Narendra, {{ GREETING | default('Good Morning') }}"
 
   - name: convert string to list
     ansible.builtin.debug:
@@ -34,20 +34,20 @@
 
   - name: convert map to list
     ansible.builtin.debug:
-      msg: "{{ tags | dict2items }}"
+      msg: "{{ tagsMap | dict2items }}"
 
   - name: convert list to map
     ansible.builtin.debug:
       msg: "{{ tagsList | items2dict }}"
 
-  - name: read student yaml
-    ansible.builtin.set_fact:
-      student_yaml: "{{ lookup( 'file', 'student.yaml' ) | from_yaml }}"
+  - name: read students yaml
+    ansible.builtin.set_fact: # setting the variable
+      student_yaml: "{{ lookup('file', 'students.yaml' ) | from_yaml }}"
 
-  - name: convert yaml to json
+  - name: convert YAML to JSON
     ansible.builtin.debug:
       msg: "{{ student_yaml | to_nice_json  }}"
-      
+
   - name: convert to upper case
     ansible.builtin.debug:
       msg: "{{ course | upper }}"
